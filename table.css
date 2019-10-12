@@ -1,0 +1,26 @@
+.refs table {
+  border: 1px solid black;
+}
+
+.refs td {
+  border: 1px solid gray;
+}
+
+.refs th {
+  border: 1px solid gray;
+}
+
+.keywords {
+  color: darkgreen;
+}
+
+.comment {
+  color: red;
+}
+
+.translation {
+	color: DarkGreen;
+	background-color: lightyellow;
+}
+
+
