@@ -25,7 +25,7 @@ db2 = sqlite3.connect('evobib.sqlite3')
 cursor2 = db2.cursor()
 cursor2.execute('select key from bibliography;')
 
-version = '1.0'
+version = '1.0.0'
 
 print ''
 print '<head>'
