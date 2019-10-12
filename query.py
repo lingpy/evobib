@@ -43,7 +43,10 @@ for arg in xargs:
     if tmp:
         args[arg] = tmp
 
-db = sqlite3.connect('data.sqlite3')
+if args.get('user') not in 'Mattis':
+    db = sqlite3.connect('data2.sqlite3')
+else:
+    db = sqlite3.connect('data.sqlite3')
 cursor = db.cursor()
 
 parts = """.. role:: translation

@@ -13,7 +13,12 @@ user = os.environ.get('REMOTE_USER', 'unknown')
 
 print "Content-type: text/html; charset=utf-8"
 
-db = sqlite3.connect('data.sqlite3')
+if __file__ == 'edit.py':
+    db = sqlite3.connect('data.sqlite3')
+else:
+    db = sqlite3.connect('data2.sqlite3')
+
+#db = sqlite3.connect('data.sqlite3')
 cursor = db.cursor()
 cursor.execute('select * from quotes;')
 db2 = sqlite3.connect('evobib.sqlite3')
@@ -103,7 +108,7 @@ template = """
               This databases offers {references} references dealing with
               computer-assisted language comparison in a broad sense. In
               addition, the database offers {quotes} distinct quotes collected from
-              {refs}. The majority of the references in the quote database
+              {refs} references. The majority of the references in the quote database
               overlaps with those in the bibliographic database. 
               The quotes are organized by keywords and
               can browsed with a full text and a keyword search. 
@@ -119,7 +124,7 @@ template = """
 <th style="background-color:#ffa600;width:100px">Release:</th>
 <td> {version}</td></tr><tr>
 <th style="background-color:#ffa600;width:100px">Date</th>
-<td> July 21, 2019</td></tr><tr>
+<td> October 12, 2019</td></tr><tr>
 <th style="background-color:#ffa600;width:100px">DOI:</th>
 <td>
 <a href="https://doi.org/10.5281/zenodo.3302056"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.3302056.svg" alt="DOI"></a>
@@ -526,8 +531,8 @@ if (document.URL.indexOf('?') != -1) {{
         what = 'tabreiter-0-1';
       }}
     }}
-    load();
-    loade();
+    if (what == 'tabreiter-0-1') {{loade()}}
+    else {{load();}}
     document.getElementById(what).checked='checked';
   }}
 }}
