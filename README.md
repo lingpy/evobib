@@ -17,3 +17,7 @@ You can also access the most recent version of the the bibliography directly via
 ```
 
 In order to explore the data in a "normal" mode, just go to the main interface at [http://bibliography.lingpy.org](http://bibliography.lingpy.org). 
+
+If you want to reference this collection in your work, please quote the database as:
+
+> List, Johann-Mattis (2019): EvoBib: A bibliographic database and quote collection. Version 1.0.0. Jena: Max Planck Institute for the Science of Human History. URL: http://bibliography.lingpy.org 
