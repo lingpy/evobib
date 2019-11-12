@@ -12,7 +12,6 @@ import os
 print "Content-type: text/html; charset=utf-8"
 print 
 print '<head>'
-print '<link rel="stylesheet" href="../cgi-bin/table.css">'
 print '<link rel="stylesheet" href="table.css">'
 print '<title>EvoBib Reference Browser</title>'
 print '</head>'
@@ -59,7 +58,7 @@ parts = """.. role:: translation
 
 def parse_comment(line, parts):
 
-    href = '<a href="?key={0}">{0}</a><sup><span onclick="showBibTex(this);" data-eb={0} class="kw eb" href="http://bibliography.lingpy.org?key={0}" target="out">BibTex</span></sup>'
+    href = '<a href="?key={0}">{0}</a><sup><span onclick="showBibTex(this);" data-eb={0} class="kw eb" href="https://digling.org/evobib/?key={0}" target="out">BibTex</span></sup>'
     if line[4].strip().lower() == '#abstract':
         parts += '**ABSTRACT**\n\n'
         comment = ''
@@ -138,7 +137,7 @@ if args.get('show', ''):
                         )['html_body']
         quote = quote[:quote.index('XSTOPX')].encode('utf-8') + '<span class="page">'+page+'</span> <sup><a title="permalink" style="color:Crimson;font-weight:bold" href="?idf='+str(line[0])+'">['+str(line[0])+']</a></sup>'
         if 'img' in quote:
-            quote = quote.replace('src="static', 'src="http://lingulist.de/documents/talks')
+            quote = quote.replace('src="static/img', 'src="images')
         if args.get('phrase'):
             quote = quote.replace(
                     args.get('phrase', 'abcdefghijklmnopqrstuvw'), 
