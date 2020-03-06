@@ -107,45 +107,46 @@
 %s/\\v{Z}/Ž/ge
 %s/--/-/ge
 %s/\\pounds/£/ge
-%s@eprint\s* = {\\url{\([^}]*\)}@url = {\1
-%s@eprint\s* = {http\([^}]*\)}@url = {http\1}
-%s@eprint\s* = {\(.*\)},\n  eprinttype\s* = {JSTOR}@url = {http://www.jstor.org/stable/\1}
-%s@eprint\s* = {\(.*\)},\n  eprinttype\s* = {GoogleBooks}@url = {http://books.google.de/books?id=\1}
-%s@eprint\s* = {\(.*\)},\n  eprinttype\s* = {googlebooks}@url = {http://books.google.de/books?id=\1}
-%s@eprint\s* = {\(.*\)},\n  eprinttype\s* = {ia}@url = {http://archive.org/details/\1}
-%s@eprint\s* = {\(.*\)},\n  eprinttype\s* = {[Uu][Rr][Ll]}@url = {\1}
+%s@[eE]print\s* = {\\url{\([^}]*\)}@url = {\1
+%s@[eE]print\s* = {http\([^}]*\)}@url = {http\1}
+%s@[eE]print\s* = {\(.*\)},\n  [eE]printtype\s* = {JSTOR}@url = {http://www.jstor.org/stable/\1}
+%s@[eE]print\s* = {\(.*\)},\n  [eE]printtype\s* = {GoogleBooks}@url = {http://books.google.de/books?id=\1}
+%s@[eE]print\s* = {\(.*\)},\n  [eE]printtype\s* = {googlebooks}@url = {http://books.google.de/books?id=\1}
+%s@[eE]print\s* = {\(.*\)},\n  [eE]printtype\s* = {ia}@url = {http://archive.org/details/\1}
+%s@[eE]print\s* = {\(.*\)},\n  [eE]printtype\s* = {[Uu][Rr][Ll]}@url = {\1}
 
 %s/{\([A-Z]+\)}/\1/ge
-%s/Reference/Book/
-%s/Mvbook/Book/
-%s/Online/Misc/
+%s/[Rr]eference/Book/
+%s/[Mm]vbook/Book/
+%s/[Oo]nline/Misc/
 g/owner\s* = /d
 g/timestamp\s* = /d
-%s@  title\s* = {\(.*\)},\n  subtitle\s* = {@  title = {\1. 
-%s@  mainsubtitle = {\(.*\)},\n  maintitle = {\(.*\)}@  maintitle = {\2. \1}
-%s/Software/Book/
-"%s/Set/
+%s@  [tT]itle\s* = {\(.*\)},\n  subtitle\s* = {@  title = {\1. 
+%s@  [mM]ainsubtitle = {\(.*\)},\n  maintitle = {\(.*\)}@  maintitle = {\2. \1}
+%s/[Ss]oftware/Book/
+"%s/[Ss]et/
 
-" %s/Customa/Book/
-" %s/Customb/Book/
+" %s/[cC]ustoma/Book/
+" %s/[cC]ustomb/Book/
 
-%s/Mvcollection/Collection/
-%s/date\s* = /year = /
-%s/@Collection/@Book/
-%s/Bookinbook/Incollection/
+%s/[mM]vcollection/Collection/
+%s/[Dd]ate\s* = /year = /
+%s/@[cC]ollection/@Book/
+%s/[bB]ookinbook/Incollection/
 %s/?\./?/ge
-%s/eventtitle/booktitle/
-%s/maintitle/booktitle/
-g/keywords\s* = .*XXX/d
-g/keywords\s* = .*_usesLingPy/d
-g/keywords\s* = .*_quotesConcepticon/d
+%s/[Ee]venttitle/booktitle/
+%s/[Mm]aintitle/booktitle/
+g/[Kk]eywords\s* = .*XXX/d
+g/[Kk]eywords\s* = .*_usesLingPy/d
+g/[Kk]eywords\s* = .*_quotesConcepticon/d
 
 %s/\\hana //ge
 %s/\\hanb //ge
 %s/_url/Url/
 
 
-g/keywords.*XXX/d
+g/[Kk]eywords.*XXX/d
 "%s/^  Ee /  Doi  /
 "g/doi\s*=\s
+%s/_doi/Doi/
 

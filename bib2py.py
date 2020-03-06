@@ -66,6 +66,7 @@ infile = open('evobib-cleaned.bib','r').read()
 
 # Find all distinc entries in the db
 entries = findall('\n@.*?\n}', infile, DOTALL)
+print(len(entries))
 
 print("First run, searching for crossrefs...")
 globaldict = {}
@@ -76,7 +77,7 @@ for entry in entries:
     this_key = findall('\n@.*?{(.*?),',entry)[0]
     globaldict[this_key] = {}
     if 'XXX' in this_key or this_type.lower() in ['set',"customa","customb",
-            "lecture", "preprint"]:
+            "lecture", "preprint"] or '{Media}' in entry:
         pass
     else:
         this_entry_dict = {}
@@ -94,6 +95,7 @@ for entry in entries:
                 this_entry_dict[param.lower()] = result.replace('\n',' ').replace('}','').replace('{','').replace('\t',' ').replace('  ',' ')
                 globaldict[this_key][param] = this_entry_dict[param]
 print("...done.")
+print(len(this_entry_dict))
 
 
 count = 0
@@ -101,12 +103,17 @@ print("Second run, converting to sqlite...")
 # Start the main loop
 bibout = codecs.open('evobib-converted.bib', 'w', 'utf-8')
 etypes = set()
+gdict2 = {}
 for entry in entries:
+    for param in parameters:
+        entry = entry.replace('  '+param, '  '+param.lower())
+
     for param in parameters:
         param = param.lower()
         entry = entry.replace('  '+param, '  '+param.lower())
     this_type = findall('\n@(.*?){',entry)[0].lower()
     this_key = findall('\n@.*?{(.*?),',entry)[0]
+    gdict2[this_key] = entry
     if 'XXX' in this_key or 'xxx' in this_key or 'submitted' in this_key or this_type.lower() in ['language', 'set','customa','customb', 'lecture', "preprint"] or 'sole' in this_key or 'lingpy' in this_key or this_key[-1] not in '0123456789abcdefghijklmn':
         pass
     else:
@@ -114,10 +121,11 @@ for entry in entries:
         for param in parameters:
             param = param.lower()
             try:
-                result = findall('  '+param + '\s*= {(.*?)},*\n',entry, DOTALL)[0]
+                result = findall(param + '\s*= {(.*?)},*\n',entry, DOTALL)[0]
             except:
                 try:
-                    result = findall('  '+param.lower() + '\s*= {(.*?)},*\n',entry, DOTALL)[0]
+                    result = findall(param.lower() + '\s*= {(.*?)},*\n',
+                            entry, DOTALL)[0]
                 except:
                     result = ''
             if result != '':
@@ -145,7 +153,6 @@ for entry in entries:
                         if not this_entry_dict[param].startswith('http'):
                             this_entry_dict[param] = 'https://doi.org/'+this_entry_dict[param]
         if len(this_entry_dict) > 1:
-            print(this_key)
             if 'userb' in this_entry_dict:
                 this_entry_dict['title'] += ' '+this_entry_dict['userb']
                 del this_entry_dict['userb']
