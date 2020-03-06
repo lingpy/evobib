@@ -16,7 +16,7 @@ print "Content-type: text/html; charset=utf-8"
 if __file__ == 'edit.py':
     db = sqlite3.connect('data.sqlite3')
 else:
-    db = sqlite3.connect('data2.sqlite3')
+    db = sqlite3.connect('data3.sqlite3')
 
 #db = sqlite3.connect('data.sqlite3')
 cursor = db.cursor()
@@ -104,7 +104,7 @@ template = """
 <th style="background-color:#ffa600;width:100px">Release:</th>
 <td> {version}</td></tr><tr>
 <th style="background-color:#ffa600;width:100px">Date</th>
-<td> October 12, 2019</td></tr><tr>
+<td> March 06, 2020</td></tr><tr>
 <th style="background-color:#ffa600;width:100px">DOI:</th>
 <td>
 <a href="https://doi.org/10.5281/zenodo.3302056"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.3302056.svg" alt="DOI"></a>
