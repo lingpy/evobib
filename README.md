@@ -20,4 +20,4 @@ In order to explore the data in a "normal" mode, just go to the main interface a
 
 If you want to reference this collection in your work, please quote the database as:
 
-> List, Johann-Mattis (2019): EvoBib: A bibliographic database and quote collection. Version 1.0.0. Jena: Max Planck Institute for the Science of Human History. URL: http://bibliography.lingpy.org 
+> List, Johann-Mattis (2020): EvoBib: A bibliographic database and quote collection. Version 1.2.0. Jena: Max Planck Institute for the Science of Human History. URL: https://digling.org/evobib/ 
