@@ -16,7 +16,7 @@ print '<link rel="stylesheet" href="table.css">'
 print '<title>EvoBib Reference Browser</title>'
 print '</head>'
 
-limit = 4709
+limit = 5298
 
 # get the args of the url, convert nasty field storage to plain dictionary,
 # there is probably a better solution, but this works for the moment
@@ -42,8 +42,8 @@ for arg in xargs:
     if tmp:
         args[arg] = tmp
 
-if args.get('user') not in 'Mattis':
-    db = sqlite3.connect('data2.sqlite3')
+if args.get('user') and args.get('user') not in 'Mattis':
+    db = sqlite3.connect('data4.sqlite3')
 else:
     db = sqlite3.connect('data.sqlite3')
 cursor = db.cursor()

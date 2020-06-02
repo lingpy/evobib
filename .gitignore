@@ -2,6 +2,13 @@
 __pycache__/
 *.py[cod]
 *$py.class
+*.bib.bak
+evobib-old/*
+bak/*
+*.sqlite3
+awesomplete.css
+awesomplete.js
+.info
 
 # C extensions
 *.so
