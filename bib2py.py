@@ -95,8 +95,10 @@ for entry in entries:
                 this_entry_dict[param.lower()] = result.replace('\n',' ').replace('}','').replace('{','').replace('\t',' ').replace('  ',' ')
                 globaldict[this_key][param] = this_entry_dict[param]
 print("...done.")
-print(len(this_entry_dict))
+print(len(globaldict))
 
+converter = {'mvbook': 'book', 'mvcollection': 'collection', 'phdthesis':
+        'thesis', 'bookinbook': 'book', 'inbook': 'incollection'}
 
 count = 0
 print("Second run, converting to sqlite...")
@@ -131,21 +133,27 @@ for entry in entries:
             if result != '':
                 if param == 'crossref':
                     try:
-                        tmp_title = globaldict[result]['maintitle']
+                        for p, v in globaldict[result].items():
+                            if p not in this_entry_dict:
+                                this_entry_dict[p] = v
                     except:
-                        try:
-                            tmp_title = globaldict[result]['mainbooktitle']
-                        except:
-                            try:
-                                tmp_title = globaldict[result]['title']
-                            except:
-                                tmp_title = "Unknown Booktitle"
-                    try:
-                        this_entry_dict['year'] = globaldict[result]['year']
-                    except:
-                        pass
-                    
-                    #this_entry_dict[param] = 'http://lingulist.de/evobib/'.format(result,tmp_title)
+                        print(result, 'is missing')
+                    #try:
+                    #    tmp_title = globaldict[result]['maintitle']
+                    #except:
+                    #    try:
+                    #        tmp_title = globaldict[result]['mainbooktitle']
+                    #    except:
+                    #        try:
+                    #            tmp_title = globaldict[result]['booktitle']
+                    #        except:
+                    #            tmp_title = "Unknown Booktitle"
+                    #try:
+                    #    this_entry_dict['year'] = globaldict[result]['year']
+                    #except:
+                    #    pass
+                    #
+                    ##this_entry_dict[param] = 'http://lingulist.de/evobib/'.format(result,tmp_title)
                 else:
                     this_entry_dict[param] = result.replace('\n',' ').replace('}','').replace('{','').replace('\t',' ').replace('  ',' ')
 
@@ -161,8 +169,8 @@ for entry in entries:
                 del this_entry_dict['usera']
             if this_type.strip() and this_type not in ['unpublished', 'preprint']:
                 etypes.add(this_type)
-            bibtex = '@'+this_type+'{'+this_key+',\n'
-            c.execute('insert into bibliography(key,type) values("'+this_key+'","'+this_type+'");')
+            bibtex = '@'+converter.get(this_type, this_type)+'{'+this_key+',\n'
+            c.execute('insert into bibliography(key,type) values("'+this_key+'","'+converter.get(this_type, this_type)+'");')
             for key in this_entry_dict.keys():
                 if key != "crossref":
                     bibtex = bibtex+'    '+key+' = {'+this_entry_dict[key]+'},\n'
