@@ -16,7 +16,7 @@ print "Content-type: text/html; charset=utf-8"
 if __file__ == 'edit.py':
     db = sqlite3.connect('data.sqlite3')
 else:
-    db = sqlite3.connect('data4.sqlite3')
+    db = sqlite3.connect('data5.sqlite3')
 
 #db = sqlite3.connect('data.sqlite3')
 cursor = db.cursor()
@@ -25,7 +25,7 @@ db2 = sqlite3.connect('evobib.sqlite3')
 cursor2 = db2.cursor()
 cursor2.execute('select key from bibliography;')
 
-version = '1.2.0'
+version = '1.3.0'
 
 print ''
 print '<head>'
@@ -104,7 +104,7 @@ template = """
 <th style="background-color:#ffa600;width:100px">Release:</th>
 <td> {version}</td></tr><tr>
 <th style="background-color:#ffa600;width:100px">Date</th>
-<td> June 02, 2020</td></tr><tr>
+<td> October 7, 2020</td></tr><tr>
 <th style="background-color:#ffa600;width:100px">DOI:</th>
 <td>
 <a href="https://doi.org/10.5281/zenodo.3699172"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.3699172.svg" alt="DOI"></a>
