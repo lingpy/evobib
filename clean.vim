@@ -118,7 +118,7 @@
 %s/{\([A-Z]+\)}/\1/ge
 %s/[Rr]eference/Book/
 %s/[Mm]vbook/Book/
-%s/[Oo]nline/Misc/
+%s/@[Oo]nline/@Book/
 g/owner\s* = /d
 g/timestamp\s* = /d
 %s@  [tT]itle\s* = {\(.*\)},\n  subtitle\s* = {@  title = {\1. 
