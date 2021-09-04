@@ -13,19 +13,16 @@ user = os.environ.get('REMOTE_USER', 'unknown')
 
 print "Content-type: text/html; charset=utf-8"
 
-if __file__ == 'edit.py':
-    db = sqlite3.connect('data.sqlite3')
-else:
-    db = sqlite3.connect('data7.sqlite3')
 
-#db = sqlite3.connect('data.sqlite3')
+db = sqlite3.connect('data-8.sqlite3')
+
 cursor = db.cursor()
 cursor.execute('select * from quotes;')
 db2 = sqlite3.connect('evobib.sqlite3')
 cursor2 = db2.cursor()
 cursor2.execute('select key from bibliography;')
 
-version = '1.4.0'
+version = '1.5.0'
 
 print ''
 print '<head>'
@@ -104,7 +101,7 @@ template = """
 <th style="background-color:#ffa600;width:100px">Release:</th>
 <td> {version}</td></tr><tr>
 <th style="background-color:#ffa600;width:100px">Date</th>
-<td>May 6, 2021</td></tr><tr>
+<td>September 4, 2021</td></tr><tr>
 <th style="background-color:#ffa600;width:100px">DOI:</th>
 <td>
 <a href="https://doi.org/10.5281/zenodo.3699172"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.3699172.svg" alt="DOI"></a>
