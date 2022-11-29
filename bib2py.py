@@ -71,6 +71,7 @@ print(len(entries))
 print("First run, searching for crossrefs...")
 globaldict = {}
 for entry in entries:
+    print(entry[:10])
     for param in parameters:
         entry = entry.replace('  '+param, '  '+param.lower())
     this_type = findall('\n@(.*?){',entry)[0].lower()
