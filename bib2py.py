@@ -41,7 +41,7 @@ parameters = [
         'Userb',
         'Usera',
         ]
-parameters.sort()
+parameters.sort(key=lambda x: len(x), reverse=True)
 
 
 # Connect the database, the name of the database is passed as argv[1]
@@ -85,10 +85,10 @@ for entry in entries:
         for param in parameters:
             param = param.lower()
             try:
-                result = findall(param + '\s*= {(.*?)},*\n',entry, DOTALL)[0]
+                result = findall("  *" + param + '\s*= {(.*?)},*\n',entry, DOTALL)[0]
             except:
                 try:
-                    result = findall(param.lower() + '\s*= {(.*?)},*\n',
+                    result = findall("  *" + param + '\s*= {(.*?)},*\n',
                             entry, DOTALL)[0]
                 except:
                     result = ''
@@ -124,10 +124,10 @@ for entry in entries:
         for param in parameters:
             param = param.lower()
             try:
-                result = findall(param + '\s*= {(.*?)},*\n',entry, DOTALL)[0]
+                result = findall("  *" + param + '\s*= {(.*?)},*\n',entry, DOTALL)[0]
             except:
                 try:
-                    result = findall(param.lower() + '\s*= {(.*?)},*\n',
+                    result = findall("  *" + param + '\s*= {(.*?)},*\n',
                             entry, DOTALL)[0]
                 except:
                     result = ''
