@@ -1,11 +1,14 @@
-#! /usr/bin/env python
-# *-* coding:utf-8 *-*
+# author   : Johann-Mattis List
+# email    : mattis.list@uni-marburg.de
+# created  : 2010-09-22
+# modified : 2026-02-17 09:19
 """
-Script converts BibTex-files into sqlite3 database files.
+EvoBib Conversion Script
+"""
 
-@author: Johann-Mattis List
-@date: 2010/09/22
-"""
+__author__="Johann-Mattis List"
+__date__="2026-02-17"
+
 
 import sqlite3
 from re import sub,findall,DOTALL
