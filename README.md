@@ -21,4 +21,4 @@ In order to explore the data in a "normal" mode, just go to the main interface a
 
 If you want to reference this collection in your work, please quote the database as:
 
-> List, Johann-Mattis (2025): EvoBib: A bibliographic database and quote collection [Database, Version 1.10.0]. Passau: Chair for Multilingual Computational Linguistics. URL: https://evobib.digling.org/ 
+> List, Johann-Mattis (2026): EvoBib: A bibliographic database and quote collection [Database, Version 1.11.0]. Passau: Chair for Multilingual Computational Linguistics. URL: https://evobib.digling.org/ 
