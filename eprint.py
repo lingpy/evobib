@@ -1,12 +1,10 @@
-from tqdm import tqdm
-
 with open("evobib-seminar.bib", "w") as f:
     pass
 with open("evobib.bib") as f, open("evobib-seminar.bib", "a") as f2:
     inbr = False
     eprints = {}
     entry = []
-    for row in tqdm(f):
+    for row in f:
         if row[0] == '@':
             inbr = True
             eprints = {}
