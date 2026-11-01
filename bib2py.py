@@ -120,7 +120,10 @@ for entry in entries:
     this_type = findall('\n@(.*?){',entry)[0].lower()
     this_key = findall('\n@.*?{(.*?),',entry)[0]
     gdict2[this_key] = entry
-    if 'XXX' in this_key or 'xxx' in this_key or 'submitted' in this_key or this_type.lower() in ['language', 'set','customa','customb', 'lecture', "preprint"] or 'sole' in this_key or 'lingpy' in this_key or this_key[-1] not in '0123456789abcdefghijklmn':
+    if 'XXX' in this_key or 'xxx' in this_key or 'submitted' in this_key or \
+            this_type.lower() in ['language', 'set','customa','customb', 
+                                  'lecture', "preprint"
+                                  ] or 'sole' in this_key or 'lingpy' in this_key or this_key[-1] not in '0123456789abcdefghijklmnCALC':
         pass
     else:
         this_entry_dict = {}
